@@ -1,6 +1,7 @@
 package sanitas.example.Calculator.model;
 
 import io.corp.calculator.TracerImpl;
+import sanitas.example.Calculator.minimal.util.JSONUtils;
 import sanitas.example.Calculator.util.APIConstants;
 
 /**
@@ -43,7 +44,16 @@ public class ApiResult {
 	 */
 	public static void traceResult(ApiResult apiResult) {
 		TracerImpl tracer = new TracerImpl();
-		tracer.trace(apiResult);
+		tracer.trace(JSONUtils.toPrettyJSONString(apiResult));
+	}
+	
+	/**
+	 * Imprime el resultado a través de la api de TRACER
+	 * @param apiResult
+	 */
+	public static void traceError(ApiResult apiResult) {
+		TracerImpl tracer = new TracerImpl();
+		tracer.trace(JSONUtils.toPrettyJSONString(apiResult));
 	}
 
 	public String getResult() {

@@ -1,13 +1,35 @@
-# Calculadora TEST. Diseño e implementacion
+# Calculadora TEST. DiseÃ±o e implementacion
 
-### Diseño del componente a desarrollar
-Se nos pide desarrollar una calculadora con Spring Boot que realice las operaciones de suma y resta de dos operandos, teniéndose en cuenta que podrá realizar otras operaciones más complejas en el futuro.
+### DiseÃ±o del componente a desarrollar
+Se nos pide desarrollar una calculadora con Spring Boot que realice las operaciones de suma y resta de dos operandos, teniï¿½ndose en cuenta que podrï¿½ realizar otras operaciones mï¿½s complejas en el futuro.
 
-Inicialmente tendremos que crear un Controlador de tipo REST que implemente los métodos propios para la suma y la resta, y a su vez un servicio que lleve implementada la operativa aritmética, que invocará el controlador REST.
+Inicialmente tendremos que crear un Controlador de tipo REST que implemente los metodos propios para la suma y la resta, y a su vez un servicio que lleve implementada la operativa aritmï¿½tica, que invocarï¿½ el controlador REST.
 
-Para el desarrollo del servicio solicitado, se han usado las dependencias de spring-boot-starter-web, que provee de las librerías necesarias para el desarrollo de interfaces REST, y además las utilidades de DevTools que aportan algunas características interesantes como la publicación de codigo en caliente, etc etc.
+Para esto la calculadora construida contiene 2 controladores, uno para operaciones bÃ¡sicas y otro para operaciones complejas, ambos apoyados en un servicio que realiza la lÃ³gica de calculo.
 
-Tal y como se ha solicitado también se hace uso de JUNIT5 para la ejecución de los tests, que seran desarrollados bajo metodología TDD (Test Driven Development)
+Para el desarrollo del servicio solicitado, se han usado las dependencias de spring-boot-starter-web, que provee de las librerï¿½as necesarias para el desarrollo de interfaces REST, y ademï¿½s las utilidades de DevTools que aportan algunas caracterï¿½sticas interesantes como la publicaciï¿½n de codigo en caliente, etc etc.
+
+Tal y como se ha solicitado tambien se hace uso de JUNIT5 para la ejecucion de los tests, que seran desarrollados bajo metodologï¿½a TDD (Test Driven Development)
+
+Nuestra APP es un servicio REST pero no RESTFUL ya que no se realizan operaciones de insercion, borrado o escritura, sino solo lectura.
+Los controladores tanto bÃ¡sico como para operaciones mÃ¡s complejas aplican el principio de Ãºnica responsabilidad y dejan toda la operativa en un servicio gestionado por Spring que es el que realiza la lÃ³gica de operaciones matemÃ¡ticas.
+
+Se ha decidio usar POST para las peticiones por comodidad y por frecuencia de uso, igualmente podrÃ­an haberse usado peticiones HTTP GET con parÃ¡metros para recepcionar los datos en la invocacion de los metodos de los controladores con @Requestparam en vez de @RequestBody que es mÃ¡s propio de JSON.
+
+Al ser un controlador REST, se ha adaptado a Tracer para que imprima el json de respuesta a devolver por la API, de forma que siempre se tracee cualquier resultado de la operacion tras realizar las invocaciones oportunas.
+
+### Construir JAR ejecutable
+Para la construcciÃ³n del JAR de la APP, solo tendremos que clonar el repo gitHub y ejecutar: 
+**mvn clean install**
+
+Esto nos construirÃ¡ el JAR 'Calculator-0.0.1.jar' en la carpeta target.
+
+### EjecuciÃ³n/Arranque de la utilidad
+En la propia carpeta en la que se generÃ³ el JAR, ejecutar bajo consola: 
+**java -jar Calculator-0.0.1.jar**
+
+### Swagger API URL
+La documentacion de los metodos expuestos en la API se encontrarÃ¡ una vez lanzada la app en: http://localhost:8080/calculator/swagger-ui.html
 
 
 ### Referencias Spring Boot

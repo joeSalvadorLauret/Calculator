@@ -3,7 +3,7 @@ package sanitas.example.Calculator.model;
 import java.math.BigDecimal;
 
 /**
- * Constructor del resultado tanto para casos OK como para errores.
+ * Objeto que construye la respuesta de la API con el resultado.
  * Devuelve siempre un objeto de Tipo ApiResult que representa los resultados devueltos por la API.
  * @author Jose Luis Salvador Lauret
  *
