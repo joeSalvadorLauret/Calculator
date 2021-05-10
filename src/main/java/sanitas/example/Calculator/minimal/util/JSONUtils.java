@@ -11,9 +11,9 @@ import sanitas.example.Calculator.model.ApiResult;
  */
 public class JSONUtils {
 	
-	public static String asJsonString(final Object obj) {
+	public static String toPrettyJSONString(final Object obj) {
 	    try {
-	        return new ObjectMapper().writeValueAsString(obj);
+	        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(obj);
 	    } catch (Exception e) {
 	        throw new RuntimeException(e);
 	    }

@@ -1,4 +1,4 @@
-package sanitas.example.Calculator.minimal;
+package sanitas.example.Calculator.complex;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,40 +22,17 @@ import sanitas.example.Calculator.util.APIConstants;
  *
  */
 @RestController
-@RequestMapping(APIConstants.BASICO_URI)
+@RequestMapping(APIConstants.COMPLEJO_URI)
 @ComponentScan(APIConstants.APP_BASE_PACKAGE)
 @ResponseBody
-public class CalculatorController {
-
+public class CalculatorComplexController {
+	
 	@Autowired
 	CalculatorMathOpService operationsService;
-
-	public CalculatorController(CalculatorMathOpService operationsService) {
-		super();
-		this.operationsService = operationsService;
-	}
-
-	@PostMapping(APIConstants.SUMAR_URI)
-	public ApiResult sumar(@RequestBody CalculatorRequest request) {
-		return ResultBuilder.getResult(operationsService.sumar(request.getOperando1(), request.getOperando2()));
-	}
-
-	@PostMapping(APIConstants.RESTAR_URI)
-	public ApiResult restar(@RequestBody CalculatorRequest request) {
-		return ResultBuilder.getResult(operationsService.restar(request.getOperando1(), request.getOperando2()));
+	
+	@PostMapping(APIConstants.POTENCIA_URI)
+	public ApiResult potencia(@RequestBody CalculatorRequest request) {
+		return ResultBuilder.getResult(operationsService.potencia(request.getOperando1(), request.getOperando2()));
 	}
 	
-	/*
-	 * AQUI SE GENERARIAN EL RESTO DE OPERACIONES COMO P. EJ MULTIPLICACION Y
-	 * DIVISION
-	 */
-
-	public void setOperationsService(CalculatorMathOpService operationsService) {
-		this.operationsService = operationsService;
-	}
-
-	
-	
-	
-
 }

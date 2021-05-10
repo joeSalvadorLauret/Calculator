@@ -1,4 +1,4 @@
-package sanitas.example.Calculator.minimal;
+package sanitas.example.Calculator.complex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -22,49 +22,24 @@ import sanitas.example.Calculator.model.ApiResult;
 import sanitas.example.Calculator.model.CalculatorRequest;
 import sanitas.example.Calculator.util.APIConstants;
 
-/**
- * Clase para realizar Tests de Integracion sobre las operaciones que acepta el
- * controlador de la calculadora básica.
- * 
- * @author Jose Luis Salvador Lauret
- *
- */
-
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = { CalculatorController.class })
+@ContextConfiguration(classes = { CalculatorComplexController.class })
 @WebMvcTest
-public class CalculatorControllerTest {
-
+public class CalculatorComplexControllerTest {
+	
 	@Autowired
 	private MockMvc mockMvc;
 
-
 	@Test
-	public void sumarTest() throws Exception {
-
+	public void potenciaTest() throws Exception {
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.post(APIConstants.BASICO_URI+APIConstants.SUMAR_URI)
-					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new BigDecimal(1.2), new BigDecimal(2.3))))
+				.perform(MockMvcRequestBuilders.post(APIConstants.COMPLEJO_URI+APIConstants.POTENCIA_URI)
+					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new BigDecimal(1.2), new BigDecimal(2))))
 					.contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isOk()).andReturn();
 		ApiResult apiResult = (ApiResult)JSONUtils.jsonToObject(result.getResponse().getContentAsString());
 		assertNotNull(apiResult);
-		assertEquals(apiResult.getResult(), new BigDecimal(3.5).setScale(APIConstants.BIG_DECIMAL_SCALE, RoundingMode.CEILING).toString());
+		assertEquals(apiResult.getResult(), new BigDecimal(1.44).setScale(APIConstants.BIG_DECIMAL_SCALE, RoundingMode.CEILING).toString());
 	}
-	
-	@Test
-	public void restarTest() throws Exception {
-
-		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.post(APIConstants.BASICO_URI+APIConstants.RESTAR_URI)
-					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new BigDecimal(2.11), new BigDecimal(1.11))))
-					.contentType(MediaType.APPLICATION_JSON)
-					.accept(MediaType.APPLICATION_JSON))
-					.andExpect(status().isOk()).andReturn();
-		ApiResult apiResult = (ApiResult)JSONUtils.jsonToObject(result.getResponse().getContentAsString());
-		assertNotNull(apiResult);
-		assertEquals(apiResult.getResult(), new BigDecimal(1).setScale(APIConstants.BIG_DECIMAL_SCALE, RoundingMode.CEILING).toString());
-	}
-	
 }
