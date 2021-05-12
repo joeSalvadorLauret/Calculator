@@ -25,8 +25,6 @@ import sanitas.example.Calculator.util.APIConstants;
 /**
  * Clase para realizar Tests de Integracion sobre las operaciones que acepta el
  * controlador de la calculadora básica.
- * 
- * @author Jose Luis Salvador Lauret
  *
  */
 

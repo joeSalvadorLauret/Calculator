@@ -22,6 +22,10 @@ import sanitas.example.Calculator.model.ApiResult;
 import sanitas.example.Calculator.model.CalculatorRequest;
 import sanitas.example.Calculator.util.APIConstants;
 
+/**
+ * 
+ * Tests de integracion para el controlador de las operaciones complejas de la calculadora.
+ */
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = { CalculatorComplexController.class })
 @WebMvcTest

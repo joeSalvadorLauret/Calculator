@@ -1,15 +1,15 @@
 # Calculadora TEST. Diseño e implementacion
 
 ### Diseño del componente a desarrollar
-Se nos pide desarrollar una calculadora con Spring Boot que realice las operaciones de suma y resta de dos operandos, teni�ndose en cuenta que podr� realizar otras operaciones m�s complejas en el futuro.
+Se nos pide desarrollar una calculadora con Spring Boot que realice las operaciones de suma y resta de dos operandos, teniéndose en cuenta que podrá realizar otras operaciones más complejas en el futuro.
 
-Inicialmente tendremos que crear un Controlador de tipo REST que implemente los metodos propios para la suma y la resta, y a su vez un servicio que lleve implementada la operativa aritm�tica, que invocar� el controlador REST.
+Inicialmente tendremos que crear un Controlador de tipo REST que implemente los metodos propios para la suma y la resta, y a su vez un servicio que lleve implementada la operativa aritmética, que invocará el controlador REST.
 
 Para esto la calculadora construida contiene 2 controladores, uno para operaciones básicas y otro para operaciones complejas, ambos apoyados en un servicio que realiza la lógica de calculo.
 
-Para el desarrollo del servicio solicitado, se han usado las dependencias de spring-boot-starter-web, que provee de las librer�as necesarias para el desarrollo de interfaces REST, y adem�s las utilidades de DevTools que aportan algunas caracter�sticas interesantes como la publicaci�n de codigo en caliente, etc etc.
+Para el desarrollo del servicio solicitado, se han usado las dependencias de spring-boot-starter-web, que provee de las librerías necesarias para el desarrollo de interfaces REST, y además las utilidades de DevTools que aportan algunas caracteristicas interesantes como la publicación de codigo en caliente, etc etc.
 
-Tal y como se ha solicitado tambien se hace uso de JUNIT5 para la ejecucion de los tests, que seran desarrollados bajo metodolog�a TDD (Test Driven Development)
+Tal y como se ha solicitado tambien se hace uso de JUNIT5 para la ejecucion de los tests, que seran desarrollados bajo metodología TDD (Test Driven Development)
 
 Nuestra APP es un servicio REST pero no RESTFUL ya que no se realizan operaciones de insercion, borrado o escritura, sino solo lectura.
 Los controladores tanto básico como para operaciones más complejas aplican el principio de única responsabilidad y dejan toda la operativa en un servicio gestionado por Spring que es el que realiza la lógica de operaciones matemáticas.

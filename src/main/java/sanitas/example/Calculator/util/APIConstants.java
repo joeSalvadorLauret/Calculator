@@ -1,5 +1,9 @@
 package sanitas.example.Calculator.util;
 
+/**
+ * 
+ * Constantes de la app para evitar uso de valores hardcodeados.
+ */
 public class APIConstants {
 	
 	/* HTTP STATUS CODES */

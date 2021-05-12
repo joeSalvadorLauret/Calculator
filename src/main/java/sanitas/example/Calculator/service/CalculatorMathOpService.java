@@ -9,12 +9,15 @@ import sanitas.example.Calculator.util.APIConstants;
 
 /**
  * Servicio para gestionar las operaciones matemáticas invocadas por los controladores.
- * @author Jose Luis Salvador Lauret
- *
  */
 @Service
 public class CalculatorMathOpService {
 	
+	
+	public CalculatorMathOpService() {
+		super();
+	}
+
 	public BigDecimal sumar(BigDecimal operando1, BigDecimal operando2) {
 		return operando1.add(operando2).setScale(APIConstants.BIG_DECIMAL_SCALE, RoundingMode.CEILING);
 	}

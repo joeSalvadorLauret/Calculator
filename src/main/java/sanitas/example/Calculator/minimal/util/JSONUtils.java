@@ -6,7 +6,6 @@ import sanitas.example.Calculator.model.ApiResult;
 
 /**
  * Clase de utilidades JSON
- * @author Jose Luis Salvador Lauret
  *
  */
 public class JSONUtils {

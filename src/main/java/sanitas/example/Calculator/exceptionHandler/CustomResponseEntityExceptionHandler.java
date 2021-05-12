@@ -15,8 +15,6 @@ import sanitas.example.Calculator.util.APIConstants;
 /**
  * Clase para realizar el manejo de excepciones a lo largo de toda la
  * aplicación. Esto es posible con la anotacion @ControllerAdvice
- * 
- * @author Jose Luis Salvador Lauret
  *
  */
 @ControllerAdvice

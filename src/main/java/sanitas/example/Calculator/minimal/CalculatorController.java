@@ -17,8 +17,6 @@ import sanitas.example.Calculator.util.APIConstants;
 /**
  * Controlador REST para la calculadora a implementar. Lleva la lógica de sumar
  * y restar
- * 
- * @author Jose Luis Salvador Lauret
  *
  */
 @RestController
@@ -49,13 +47,5 @@ public class CalculatorController {
 	 * AQUI SE GENERARIAN EL RESTO DE OPERACIONES COMO P. EJ MULTIPLICACION Y
 	 * DIVISION
 	 */
-
-	public void setOperationsService(CalculatorMathOpService operationsService) {
-		this.operationsService = operationsService;
-	}
-
-	
-	
-	
 
 }

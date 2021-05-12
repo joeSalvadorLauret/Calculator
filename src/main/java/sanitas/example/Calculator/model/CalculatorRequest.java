@@ -2,13 +2,17 @@ package sanitas.example.Calculator.model;
 
 import java.math.BigDecimal;
 
+/**
+ * 
+ * Clase para representar las peticiones a la calculadora.
+ */
 public class CalculatorRequest {
 	
 	private BigDecimal operando1;
 	private BigDecimal operando2;
 	
 	public CalculatorRequest() {
-		
+		super();
 	}
 	
 	public CalculatorRequest(BigDecimal operando1, BigDecimal operando2) {

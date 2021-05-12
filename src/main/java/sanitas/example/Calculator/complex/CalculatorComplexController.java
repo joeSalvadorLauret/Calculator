@@ -15,10 +15,7 @@ import sanitas.example.Calculator.service.CalculatorMathOpService;
 import sanitas.example.Calculator.util.APIConstants;
 
 /**
- * Controlador REST para la calculadora a implementar. Lleva la lógica de sumar
- * y restar
- * 
- * @author Jose Luis Salvador Lauret
+ * Controlador REST para las operaciones complejas de la calculadora. Lleva la logica la operacion de potencia
  *
  */
 @RestController
@@ -27,6 +24,11 @@ import sanitas.example.Calculator.util.APIConstants;
 @ResponseBody
 public class CalculatorComplexController {
 	
+	public CalculatorComplexController(CalculatorMathOpService operationsService) {
+		super();
+		this.operationsService = operationsService;
+	}
+
 	@Autowired
 	CalculatorMathOpService operationsService;
 	

@@ -9,8 +9,6 @@ import sanitas.example.Calculator.util.APIConstants;
  * resultado de la operacion solicitada, el status code para conocer el
  * resultado de la operación y el mensaje de error en caso de producirse el
  * mismo.
- * 
- * @author Jose Luis Salvador Lauret
  *
  */
 public class ApiResult {
@@ -20,6 +18,7 @@ public class ApiResult {
 	private String error;
 
 	private ApiResult() {
+		super();
 	}
 
 	static ApiResult withResult(String resultMessage) {
