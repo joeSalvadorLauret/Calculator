@@ -15,8 +15,6 @@ import sanitas.example.Calculator.util.APIConstants;
 /**
  * Clase para realizar el manejo de excepciones a lo largo de toda la
  * aplicación. Esto es posible con la anotacion @ControllerAdvice
- * 
- * @author Jose Luis Salvador Lauret
  *
  */
 @ControllerAdvice
@@ -28,7 +26,7 @@ public class CustomResponseEntityExceptionHandler  extends ResponseEntityExcepti
 	@Override
 	protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.NUMERIC_PARAMS_ERROR_MSG), headers, status, request);
+		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.NUMERIC_PARAMS_ERROR_MSG), headers, HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}
 	
 	/**
@@ -37,6 +35,6 @@ public class CustomResponseEntityExceptionHandler  extends ResponseEntityExcepti
 	@Override
 	protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.EMPTY_PARAMS_ERROR_MSG), headers, status, request);
+		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.EMPTY_PARAMS_ERROR_MSG), headers, HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}
 }

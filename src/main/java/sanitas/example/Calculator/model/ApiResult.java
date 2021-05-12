@@ -1,16 +1,14 @@
 package sanitas.example.Calculator.model;
 
 import io.corp.calculator.TracerImpl;
-import sanitas.example.Calculator.minimal.util.JSONUtils;
 import sanitas.example.Calculator.util.APIConstants;
+import sanitas.example.Calculator.util.JSONUtils;
 
 /**
  * Representa el resultado devuelto por la API Rest Implementada. Contiene el
  * resultado de la operacion solicitada, el status code para conocer el
  * resultado de la operación y el mensaje de error en caso de producirse el
  * mismo.
- * 
- * @author Jose Luis Salvador Lauret
  *
  */
 public class ApiResult {
@@ -20,9 +18,10 @@ public class ApiResult {
 	private String error;
 
 	private ApiResult() {
+		super();
 	}
 
-	static ApiResult withResult(String resultMessage) {
+	public static ApiResult withResult(String resultMessage) {
 		ApiResult apiResult = new ApiResult();
 		apiResult.status = APIConstants.STATUS_HTTP_200;
 		apiResult.result = resultMessage;
@@ -30,7 +29,7 @@ public class ApiResult {
 		return apiResult;
 	}
 
-	static ApiResult withError(String errorMessage) {
+	public static ApiResult withError(String errorMessage) {
 		ApiResult apiResult = new ApiResult();
 		apiResult.status = APIConstants.STATUS_HTTP_500;
 		apiResult.error = errorMessage;
@@ -54,6 +53,12 @@ public class ApiResult {
 	public static void traceError(ApiResult apiResult) {
 		TracerImpl tracer = new TracerImpl();
 		tracer.trace(JSONUtils.toPrettyJSONString(apiResult));
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return ( ((ApiResult)o).getResult().equals(this.result) 
+				&& (((ApiResult)o).getStatus() == this.status));
 	}
 
 	public String getResult() {

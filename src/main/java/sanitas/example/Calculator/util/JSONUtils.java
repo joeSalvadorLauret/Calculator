@@ -1,4 +1,4 @@
-package sanitas.example.Calculator.minimal.util;
+package sanitas.example.Calculator.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -6,7 +6,6 @@ import sanitas.example.Calculator.model.ApiResult;
 
 /**
  * Clase de utilidades JSON
- * @author Jose Luis Salvador Lauret
  *
  */
 public class JSONUtils {
