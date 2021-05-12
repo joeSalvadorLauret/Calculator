@@ -7,6 +7,8 @@ Inicialmente tendremos que crear un Controlador de tipo REST que implemente los 
 
 Para esto la calculadora construida contiene 1 controlador, que en base a la operacion que viaja ahora en la request invocar al servicio que implemente la operacion de forma dinámica.
 
+Para añadir operaciones nuevas a la calculadora, solo es necesario añadir el servicio que la implementa tal y como pueden verse las clases creadas en el package sanitas.example.Calculator.service.impl además del test correspondiente desarrollado bajo TDD. Además será necesario enviar en la petición la cadena que represente dicha operacion ("sumar" para sumar, "restar" para restar..) Dentro de cada servicio de operacion se define dicho valor.
+
 Para el desarrollo del servicio solicitado, se han usado las dependencias de spring-boot-starter-web, que provee de las librerías necesarias para el desarrollo de interfaces REST, y además las utilidades de DevTools que aportan algunas caracteristicas interesantes como la publicación de codigo en caliente, etc etc.
 
 Tal y como se ha solicitado tambien se hace uso de JUNIT5 para la ejecucion de los tests, que seran desarrollados bajo metodología TDD (Test Driven Development)
