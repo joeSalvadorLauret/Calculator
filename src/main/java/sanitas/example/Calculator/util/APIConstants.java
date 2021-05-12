@@ -18,7 +18,8 @@ public class APIConstants {
 	public static final int BIG_DECIMAL_SCALE = 2;
 	
 	/* ENDPOINT URIs */
-	public static final String BASICO_URI = "/basico";
+	public static final String OPERAR_URI = "/operar";
+	public static final String ROOT_URI = "/";
 	public static final String SUMAR_URI = "/sumar";
 	public static final String RESTAR_URI = "/restar";
 	public static final String COMPLEJO_URI = "/complejo";
@@ -26,4 +27,10 @@ public class APIConstants {
 	
 	/* BASE PACKAGE */
 	public static final String APP_BASE_PACKAGE = "sanitas.example.Calculator";
+	
+	/* OPERAND NAMES && TYPES */
+	public static final String OPERANDO1_NAME = "operando1";
+	public static final String OPERANDO2_NAME = "operando2";
+	public static final String OPERANDO_TYPE = "Numeric";
+	public static final String NUMERIC_REGEX = "-?\\d+(\\.\\d+)?";
 }

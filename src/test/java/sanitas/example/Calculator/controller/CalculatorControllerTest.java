@@ -1,4 +1,4 @@
-package sanitas.example.Calculator.minimal;
+package sanitas.example.Calculator.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -17,10 +17,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import sanitas.example.Calculator.minimal.util.JSONUtils;
+import sanitas.example.Calculator.controller.CalculatorController;
 import sanitas.example.Calculator.model.ApiResult;
 import sanitas.example.Calculator.model.CalculatorRequest;
 import sanitas.example.Calculator.util.APIConstants;
+import sanitas.example.Calculator.util.JSONUtils;
 
 /**
  * Clase para realizar Tests de Integracion sobre las operaciones que acepta el
@@ -41,8 +42,8 @@ public class CalculatorControllerTest {
 	public void sumarTest() throws Exception {
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.post(APIConstants.BASICO_URI+APIConstants.SUMAR_URI)
-					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new BigDecimal(1.2), new BigDecimal(2.3))))
+				.perform(MockMvcRequestBuilders.post(APIConstants.OPERAR_URI+APIConstants.ROOT_URI)
+					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new String("1.2"), new String("2.3"), new String("sumar"))))
 					.contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isOk()).andReturn();
@@ -55,14 +56,28 @@ public class CalculatorControllerTest {
 	public void restarTest() throws Exception {
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.post(APIConstants.BASICO_URI+APIConstants.RESTAR_URI)
-					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new BigDecimal(2.11), new BigDecimal(1.11))))
+				.perform(MockMvcRequestBuilders.post(APIConstants.OPERAR_URI+APIConstants.ROOT_URI)
+					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new String("2.11"), new String("1.11"), new String("restar"))))
 					.contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isOk()).andReturn();
 		ApiResult apiResult = (ApiResult)JSONUtils.jsonToObject(result.getResponse().getContentAsString());
 		assertNotNull(apiResult);
 		assertEquals(apiResult.getResult(), new BigDecimal(1).setScale(APIConstants.BIG_DECIMAL_SCALE, RoundingMode.CEILING).toString());
+	}
+	
+	@Test
+	public void potenciaTest() throws Exception {
+
+		MvcResult result = mockMvc
+				.perform(MockMvcRequestBuilders.post(APIConstants.OPERAR_URI+APIConstants.ROOT_URI)
+					.content(JSONUtils.toPrettyJSONString(new CalculatorRequest(new String("2.00"), new String("3.00"), new String("potencia"))))
+					.contentType(MediaType.APPLICATION_JSON)
+					.accept(MediaType.APPLICATION_JSON))
+					.andExpect(status().isOk()).andReturn();
+		ApiResult apiResult = (ApiResult)JSONUtils.jsonToObject(result.getResponse().getContentAsString());
+		assertNotNull(apiResult);
+		assertEquals(apiResult.getResult(), new BigDecimal(8).setScale(APIConstants.BIG_DECIMAL_SCALE, RoundingMode.CEILING).toString());
 	}
 	
 }

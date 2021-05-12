@@ -1,7 +1,9 @@
-package sanitas.example.Calculator.minimal;
+package sanitas.example.Calculator.controller;
 
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import sanitas.example.Calculator.model.ApiResult;
 import sanitas.example.Calculator.model.CalculatorRequest;
 import sanitas.example.Calculator.model.ResultBuilder;
-import sanitas.example.Calculator.service.CalculatorMathOpService;
+import sanitas.example.Calculator.service.impl.MapaDinamicoOperacionesService;
 import sanitas.example.Calculator.util.APIConstants;
 
 /**
@@ -20,32 +22,22 @@ import sanitas.example.Calculator.util.APIConstants;
  *
  */
 @RestController
-@RequestMapping(APIConstants.BASICO_URI)
+@RequestMapping(APIConstants.OPERAR_URI)
 @ComponentScan(APIConstants.APP_BASE_PACKAGE)
 @ResponseBody
 public class CalculatorController {
 
 	@Autowired
-	CalculatorMathOpService operationsService;
+	MapaDinamicoOperacionesService operationsService;
 
-	public CalculatorController(CalculatorMathOpService operationsService) {
+	public CalculatorController(MapaDinamicoOperacionesService operationsService) {
 		super();
 		this.operationsService = operationsService;
 	}
 
-	@PostMapping(APIConstants.SUMAR_URI)
-	public ApiResult sumar(@RequestBody CalculatorRequest request) {
-		return ResultBuilder.getResult(operationsService.sumar(request.getOperando1(), request.getOperando2()));
+	@PostMapping(APIConstants.ROOT_URI)
+	public ApiResult calcular(@RequestBody CalculatorRequest request) throws TypeMismatchException, MissingServletRequestParameterException {
+		return ResultBuilder.getResult(operationsService.ejecutar(request.getOperando1(), request.getOperando2(), request.getOperacion()));
 	}
-
-	@PostMapping(APIConstants.RESTAR_URI)
-	public ApiResult restar(@RequestBody CalculatorRequest request) {
-		return ResultBuilder.getResult(operationsService.restar(request.getOperando1(), request.getOperando2()));
-	}
-	
-	/*
-	 * AQUI SE GENERARIAN EL RESTO DE OPERACIONES COMO P. EJ MULTIPLICACION Y
-	 * DIVISION
-	 */
 
 }

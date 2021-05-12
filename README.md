@@ -5,7 +5,7 @@ Se nos pide desarrollar una calculadora con Spring Boot que realice las operacio
 
 Inicialmente tendremos que crear un Controlador de tipo REST que implemente los metodos propios para la suma y la resta, y a su vez un servicio que lleve implementada la operativa aritmética, que invocará el controlador REST.
 
-Para esto la calculadora construida contiene 2 controladores, uno para operaciones básicas y otro para operaciones complejas, ambos apoyados en un servicio que realiza la lógica de calculo.
+Para esto la calculadora construida contiene 1 controlador, que en base a la operacion que viaja ahora en la request invocar al servicio que implemente la operacion de forma dinámica.
 
 Para el desarrollo del servicio solicitado, se han usado las dependencias de spring-boot-starter-web, que provee de las librerías necesarias para el desarrollo de interfaces REST, y además las utilidades de DevTools que aportan algunas caracteristicas interesantes como la publicación de codigo en caliente, etc etc.
 

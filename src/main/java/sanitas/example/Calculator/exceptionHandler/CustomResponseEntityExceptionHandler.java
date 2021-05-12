@@ -26,7 +26,7 @@ public class CustomResponseEntityExceptionHandler  extends ResponseEntityExcepti
 	@Override
 	protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.NUMERIC_PARAMS_ERROR_MSG), headers, status, request);
+		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.NUMERIC_PARAMS_ERROR_MSG), headers, HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}
 	
 	/**
@@ -35,6 +35,6 @@ public class CustomResponseEntityExceptionHandler  extends ResponseEntityExcepti
 	@Override
 	protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.EMPTY_PARAMS_ERROR_MSG), headers, status, request);
+		return handleExceptionInternal(ex, ResultBuilder.getResultFromError(APIConstants.EMPTY_PARAMS_ERROR_MSG), headers, HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}
 }

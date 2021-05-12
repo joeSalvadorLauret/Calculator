@@ -1,4 +1,4 @@
-package sanitas.example.Calculator.minimal.util;
+package sanitas.example.Calculator.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
