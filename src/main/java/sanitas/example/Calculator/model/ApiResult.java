@@ -1,5 +1,7 @@
 package sanitas.example.Calculator.model;
 
+import java.math.BigDecimal;
+
 import io.corp.calculator.TracerImpl;
 import sanitas.example.Calculator.util.APIConstants;
 import sanitas.example.Calculator.util.JSONUtils;
@@ -14,14 +16,13 @@ import sanitas.example.Calculator.util.JSONUtils;
 public class ApiResult {
 
 	private int status;
-	private String result;
+	private BigDecimal result;
 	private String error;
 
 	private ApiResult() {
-		super();
 	}
 
-	public static ApiResult withResult(String resultMessage) {
+	public static ApiResult withResult(BigDecimal resultMessage) {
 		ApiResult apiResult = new ApiResult();
 		apiResult.status = APIConstants.STATUS_HTTP_200;
 		apiResult.result = resultMessage;
@@ -61,7 +62,7 @@ public class ApiResult {
 				&& (((ApiResult)o).getStatus() == this.status));
 	}
 
-	public String getResult() {
+	public BigDecimal getResult() {
 		return result;
 	}
 

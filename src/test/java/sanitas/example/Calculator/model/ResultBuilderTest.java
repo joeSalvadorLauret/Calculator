@@ -2,6 +2,8 @@ package sanitas.example.Calculator.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,7 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 @WebMvcTest
 public class ResultBuilderTest {
 	
-	private static final String value = "1.0";
+	private static final BigDecimal value = new BigDecimal("1.0");
 	private static final String message = "message";
 	
 	@Test

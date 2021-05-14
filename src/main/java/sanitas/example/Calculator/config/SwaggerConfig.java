@@ -3,6 +3,7 @@ package sanitas.example.Calculator.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import sanitas.example.Calculator.util.APIConstants;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -21,7 +22,7 @@ public class SwaggerConfig {
    public Docket api() {
       return new Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.basePackage("sanitas.example.Calculator"))
+            .apis(RequestHandlerSelectors.basePackage(APIConstants.APP_BASE_PACKAGE))
             .paths(PathSelectors.any())
             .build();
    }

@@ -1,5 +1,6 @@
 package sanitas.example.Calculator.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -15,14 +16,14 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
  *
  */
 @Service
-public class MapaDinamicoOperacionesService {
+public class DynamicMapOperationsService {
 	
-	private final Map<String, OperacionBaseService> servicesByCountryCode;
+	private final Map<String, BaseOperationService> servicesByOpCode;
 
 	@Autowired
-    public MapaDinamicoOperacionesService(List<OperacionBaseService> serviciosOperaciones) {
-		servicesByCountryCode = serviciosOperaciones.stream()
-                .collect(Collectors.toMap(OperacionBaseService::getOperacion, Function.identity()));
+    public DynamicMapOperationsService(List<BaseOperationService> serviciosOperaciones) {
+		servicesByOpCode = serviciosOperaciones.stream()
+                .collect(Collectors.toMap(BaseOperationService::getOperation, Function.identity()));
     }
 	
 	/**
@@ -34,8 +35,8 @@ public class MapaDinamicoOperacionesService {
 	 * @throws TypeMismatchException
 	 * @throws MissingServletRequestParameterException
 	 */
-	public String ejecutar(String operando1, String operando2, String operacion) throws TypeMismatchException, MissingServletRequestParameterException {
-		OperacionBaseService operacionService = servicesByCountryCode.get(operacion);
-		return operacionService.ejecutar(operando1, operando2);
+	public BigDecimal execute(BigDecimal operando1, BigDecimal operando2, String operacion) throws TypeMismatchException, MissingServletRequestParameterException {
+		BaseOperationService operacionService = servicesByOpCode.get(operacion);
+		return operacionService.execute(operando1, operando2);
 	}
 }
