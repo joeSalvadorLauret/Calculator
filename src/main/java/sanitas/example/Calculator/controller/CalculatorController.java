@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiResponses;
 import sanitas.example.Calculator.model.ApiResult;
 import sanitas.example.Calculator.model.CalculatorRequest;
 import sanitas.example.Calculator.model.ResultBuilder;
-import sanitas.example.Calculator.service.impl.MapaDinamicoOperacionesService;
+import sanitas.example.Calculator.service.impl.DynamicMapOperationsService;
 import sanitas.example.Calculator.util.APIConstants;
 
 /**
@@ -36,18 +36,17 @@ import sanitas.example.Calculator.util.APIConstants;
 public class CalculatorController {
 
 	@Autowired
-	MapaDinamicoOperacionesService operationsService;
+	DynamicMapOperationsService operationsService;
 
-	public CalculatorController(MapaDinamicoOperacionesService operationsService) {
-		super();
+	public CalculatorController(DynamicMapOperationsService operationsService) {
 		this.operationsService = operationsService;
 	}
 
 	@ApiOperation(value = "Operacion a realizar con la calculadora"
 			,notes = "Metodo a invocar para las operaciones a realizar. Acepta JSON")
 	@PostMapping(APIConstants.ROOT_URI)
-	public ApiResult calcular(@RequestBody CalculatorRequest request) throws TypeMismatchException, MissingServletRequestParameterException {
-		return ResultBuilder.getResult(operationsService.ejecutar(request.getOperando1(), request.getOperando2(), request.getOperacion()));
+	public ApiResult calculate(@RequestBody CalculatorRequest request) throws TypeMismatchException, MissingServletRequestParameterException {
+		return ResultBuilder.getResult(operationsService.execute(request.getOperando1(), request.getOperando2(), request.getOperacion()));
 	}
 
 }

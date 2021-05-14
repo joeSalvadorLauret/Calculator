@@ -24,11 +24,11 @@ Al ser un controlador REST, se ha adaptado a Tracer para que imprima el json de 
 Para la construcción del JAR de la APP, solo tendremos que clonar el repo gitHub y ejecutar: 
 **mvn clean install**
 
-Esto nos construirá el JAR 'Calculator-0.0.1.jar' en la carpeta target.
+Esto nos construirá el JAR 'Calculator-1.0.0.jar' en la carpeta target.
 
 ### Ejecución/Arranque de la utilidad
 En la propia carpeta en la que se generó el JAR, ejecutar bajo consola: 
-**java -jar Calculator-0.0.1.jar**
+**java -jar Calculator-1.0.0.jar**
 
 ### Swagger API URL
 La documentacion de los metodos expuestos en la API se encontrará una vez lanzada la app en: http://localhost:8080/calculator/swagger-ui.html
